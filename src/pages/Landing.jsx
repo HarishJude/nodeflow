@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Network, Sparkles, ArrowRight, StickyNote, StickyNotePlus } from 'lucide-react';
+import WorkflowCanvas from '../components/WorkflowCanvas';
 import './Landing.css';
 
 export default function Landing() {
   return (
     <div className="landing-container">
-      
+   < WorkflowCanvas/>
       {/* Navbar */}
       <header className="landing-header">
         <div className="logo-area">
@@ -45,6 +46,43 @@ export default function Landing() {
             Explore Demo
           </Link>
         </div>
+
+        
+        {/* High-Contrast Tech Feature Cards */}
+        <section className="features-section">
+          <div className="tech-cards-grid">
+            
+            <div className="tech-card">
+              <div className="card-top">
+                <span className="card-tag">Core Feature</span>
+                <div className="tech-icon">🧠</div>
+              </div>
+              <h3>Smart Mind-Mapping</h3>
+              <p>Effortlessly connect ideas, code blocks, and architecture components with dynamic, snapping visual nodes.</p>
+            </div>
+
+            <div className="tech-card">
+              <div className="card-top">
+                <span className="card-tag">Performance</span>
+                <div className="tech-icon">⚡</div>
+              </div>
+              <h3>Lightning Fast</h3>
+              <p>Optimized with modern web technologies for fluid 60FPS dragging, zooming, and real-time canvas rendering.</p>
+            </div>
+
+            <div className="tech-card">
+              <div className="card-top">
+                <span className="card-tag">Protection</span>
+                <div className="tech-icon">🛡️</div>
+              </div>
+              <h3>Private & Secure</h3>
+              <p>Keep your architectural drafts, system designs, and personal brainstorms completely private and locally preserved.</p>
+            </div>
+
+          </div>
+        </section>
+
+
       </main>
 
       {/* Footer */}
