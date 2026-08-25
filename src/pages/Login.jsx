@@ -10,22 +10,34 @@ export default function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    // Simulate backend roundtrip to Auth Microservice
     setTimeout(() => {
-      if (email && password) {
+      const existingUsers = JSON.parse(localStorage.getItem('nodeflow_users') || '[]');
+      
+      // Find matching user
+      const validUser = existingUsers.find(
+        (user) => user.email === email && user.password === password
+      );
+
+      // Fallback for quick testing if no users registered yet
+      const isDefaultMock = email === 'developer@nodeflow.io' && password;
+
+      if (validUser || isDefaultMock) {
+        const userData = validUser || { name: 'Jude Harish', email };
+        localStorage.setItem('nodeflow_current_user', JSON.stringify(userData));
         setLoading(false);
         navigate('/dashboard');
       } else {
-        setError('Invalid credentials. Please verify your input.');
+        setError('Invalid credentials or account does not exist. Please sign up first.');
         setLoading(false);
       }
     }, 800);
   };
+
 
   return (
     <div className="login-wrapper" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>

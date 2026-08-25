@@ -11,13 +11,32 @@ export default function Register() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = async (e) => {
+   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
     setTimeout(() => {
       if (name && email && password) {
+        // Fetch existing users or initialize empty array
+        const existingUsers = JSON.parse(localStorage.getItem('nodeflow_users') || '[]');
+        
+        // Check if email already exists
+        const userExists = existingUsers.some(user => user.email === email);
+        if (userExists) {
+          setError('An account with this email already exists.');
+          setLoading(false);
+          return;
+        }
+
+        // Save new user
+        const newUser = { name, email, password };
+        existingUsers.push(newUser);
+        localStorage.setItem('nodeflow_users', JSON.stringify(existingUsers));
+        
+        // Set current active session
+        localStorage.setItem('nodeflow_current_user', JSON.stringify(newUser));
+
         setLoading(false);
         navigate('/dashboard');
       } else {
@@ -26,6 +45,7 @@ export default function Register() {
       }
     }, 800);
   };
+
 
   return (
     <div className="login-wrapper" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
