@@ -1,12 +1,14 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Network, Sparkles, ArrowRight, StickyNote, StickyNotePlus } from 'lucide-react';
+import { Network, ArrowRight, StickyNotePlus } from 'lucide-react';
 import WorkflowCanvas from '../components/WorkflowCanvas';
 import './Landing.css';
 
 export default function Landing() {
   return (
     <div className="landing-container">
-   < WorkflowCanvas/>
+      <WorkflowCanvas />
+      
       {/* Navbar */}
       <header className="landing-header">
         <div className="logo-area">
@@ -17,7 +19,7 @@ export default function Landing() {
         </div>
         <div className="nav-links">
           <Link to="/login" className="signin-btn">Sign In</Link>
-          <Link to="/dashboard" className="get-started-btn">Get Started Free</Link>
+          <Link to="/register" className="get-started-btn">Get Started Free</Link>
         </div>
       </header>
 
@@ -38,7 +40,7 @@ export default function Landing() {
         </p>
 
         <div className="hero-actions">
-          <Link to="/dashboard" className="primary-action-btn">
+          <Link to="/register" className="primary-action-btn">
             <span>Launch Workspace</span>
             <ArrowRight size={16} />
           </Link>
@@ -47,11 +49,9 @@ export default function Landing() {
           </Link>
         </div>
 
-        
         {/* High-Contrast Tech Feature Cards */}
         <section className="features-section">
           <div className="tech-cards-grid">
-            
             <div className="tech-card">
               <div className="card-top">
                 <span className="card-tag">Core Feature</span>
@@ -78,11 +78,8 @@ export default function Landing() {
               <h3>Private & Secure</h3>
               <p>Keep your architectural drafts, system designs, and personal brainstorms completely private and locally preserved.</p>
             </div>
-
           </div>
         </section>
-
-
       </main>
 
       {/* Footer */}

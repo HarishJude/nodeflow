@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import WorkflowCanvas from '../components/WorkflowCanvas';
-import './Login.css';
+import './Login.css'; // Reusing your clean login styling classes
 
-export default function Login() {
+export default function Register() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    // Simulate backend roundtrip to Auth Microservice
     setTimeout(() => {
-      if (email && password) {
+      if (name && email && password) {
         setLoading(false);
         navigate('/dashboard');
       } else {
-        setError('Invalid credentials. Please verify your input.');
+        setError('Please fill in all fields to create your account.');
         setLoading(false);
       }
     }, 800);
@@ -33,13 +33,24 @@ export default function Login() {
       <div className="login-container">
         <div className="login-card">
           <div className="login-header">
-            <h2>NodeFlow Access</h2>
-            <p>Authenticate via Auth Microservice</p>
+            <h2>Create Account</h2>
+            <p>Start mapping your architecture with NodeFlow</p>
           </div>
 
           {error && <div className="error-banner">{error}</div>}
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleRegister}>
+            <div className="form-group">
+              <label>Full Name</label>
+              <input 
+                type="text" 
+                value={name} 
+                onChange={(e) => setName(e.target.value)} 
+                placeholder="Jude Harish"
+                required 
+              />
+            </div>
+
             <div className="form-group">
               <label>Email Address</label>
               <input 
@@ -63,12 +74,12 @@ export default function Login() {
             </div>
 
             <button type="submit" className="login-button" disabled={loading}>
-              {loading ? 'Authenticating...' : 'Sign In'}
+              {loading ? 'Creating Workspace...' : 'Sign Up'}
             </button>
           </form>
 
           <p style={{ textAlign: 'center', marginTop: '16px', fontSize: '13px', color: '#64748B' }}>
-            Don't have an account? <Link to="/register" style={{ color: '#2196F3', textDecoration: 'none', fontWeight: '600' }}>Sign Up</Link>
+            Already have an account? <Link to="/login" style={{ color: '#2196F3', textDecoration: 'none', fontWeight: '600' }}>Sign In</Link>
           </p>
         </div>
       </div>
