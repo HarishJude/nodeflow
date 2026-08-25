@@ -14,29 +14,24 @@ export default function WorkflowCanvas() {
       const width = window.innerWidth;
       const height = window.innerHeight;
 
-      // Set actual size in memory (scaled for retina/high-DPI screens)
       canvas.width = width * dpr;
       canvas.height = height * dpr;
-
-      // Set display size in CSS pixels
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
 
-      // Normalize coordinate system to use CSS pixels
       ctx.scale(dpr, dpr);
-
       return { width, height };
     };
 
     let { width, height } = setupCanvas();
 
     const getInitialNodes = (w, h) => [
-      { label: 'Problems', x: 80, y: 100, width: 140, height: 36 },
-      { label: 'Researches', x: w - 230, y: 100, width: 150, height: 36 },
-      { label: 'Solutions', x: 80, y: h / 2 - 18, width: 160, height: 36 },
-      { label: 'Projects', x: w - 230, y: h / 2 - 18, width: 140, height: 36 },
-      { label: 'Planning', x: 80, y: h - 140, width: 130, height: 36 },
-      { label: 'Next Steps', x: w - 230, y: h - 140, width: 140, height: 36 },
+      { label: 'UI Client', x: 80, y: 100, width: 140, height: 36 },
+      { label: 'API Gateway', x: w - 230, y: 100, width: 150, height: 36 },
+      { label: 'Auth Microservice', x: 80, y: h / 2 - 18, width: 160, height: 36 },
+      { label: 'Cache Layer', x: w - 230, y: h / 2 - 18, width: 140, height: 36 },
+      { label: 'Event Bus', x: 80, y: h - 140, width: 130, height: 36 },
+      { label: 'PostgreSQL', x: w - 230, y: h - 140, width: 140, height: 36 },
     ];
 
     let nodes = getInitialNodes(width, height);
@@ -131,7 +126,6 @@ export default function WorkflowCanvas() {
         let cx = node.x;
         let cy = node.y;
 
-        // Card background & crisp border
         ctx.fillStyle = 'rgba(255, 255, 255, 0.98)';
         ctx.strokeStyle = '#90CAF9';
         ctx.lineWidth = 1.25;
@@ -141,13 +135,11 @@ export default function WorkflowCanvas() {
         ctx.fill();
         ctx.stroke();
 
-        // Node text label
         ctx.fillStyle = '#0F172A';
         ctx.font = '600 12px Inter, system-ui, sans-serif';
         ctx.textBaseline = 'middle';
         ctx.fillText(node.label, cx + 14, cy + node.height / 2);
 
-        // Status indicator dot
         ctx.beginPath();
         ctx.arc(cx + node.width - 16, cy + node.height / 2, 3.5, 0, Math.PI * 2);
         ctx.fillStyle = '#2196F3';

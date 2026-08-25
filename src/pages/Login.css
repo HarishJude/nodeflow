@@ -1,0 +1,102 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  pointer-events: auto; /* Ensures form fields are clickable over the canvas */
+  background: rgba(15, 23, 42, 0.04); /* Soft frosted veil over background */
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.25px solid #90CAF9;
+  padding: 36px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 12px 30px rgba(33, 150, 243, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.login-header h2 {
+  margin: 0 0 6px 0;
+  color: #0F172A;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.login-header p {
+  margin: 0 0 24px 0;
+  color: #64748B;
+  font-size: 13px;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.form-group input {
+  padding: 11px 14px;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #0F172A;
+  outline: none;
+  background: #FFFFFF;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #2196F3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.15);
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.login-button:hover:not(:disabled) {
+  background: #1976D2;
+}
+
+.login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error-banner {
+  background: #FEE2E2;
+  color: #B91C1C;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 18px;
+  border: 1px solid #FCA5A5;
+}
