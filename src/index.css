@@ -1,14 +1,14 @@
 /* src/index.css */
 :root {
-  --bg-main: #F4F8FF;         /* Ultra-clean light blue background */
-  --surface: #FFFFFF;         /* Crisp white cards */
-  --surface-hover: #E3F2FD;   /* Soft pale blue hover state */
-  --text-main: #0F172A;       /* Deep slate for razor-sharp readability */
-  --text-secondary: #475569;  /* Refined slate gray */
-  --primary: #2196F3;         /* Vibrant Material Blue */
-  --primary-dark: #0D47A1;    /* Deep corporate blue */
-  --accent: #90CAF9;          /* Light soft blue highlight */
-  --border-color: #CFD8DC;    /* Clean technical border */
+  --bg-main: #F4F8FF;         
+  --surface: #FFFFFF;        
+  --surface-hover: #E3F2FD;   
+  --text-main: #0F172A;       
+  --text-secondary: #475569;  
+  --primary: #2196F3;         
+  --primary-dark: #0D47A1;    
+  --accent: #90CAF9;          
+  --border-color: #CFD8DC;    
 }
 
 * {
