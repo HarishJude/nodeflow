@@ -35,6 +35,7 @@ const SHORTCUTS = [
   ['+ / -', 'Zoom in / out'],
   ['0', 'Reset zoom'],
   ['Esc', 'Deselect / cancel'],
+  ['🌙 / ☀️ button', 'Toggle dark mode'],
 ];
 
 export default function Canva() {
@@ -71,6 +72,7 @@ export default function Canva() {
   const [showHelp, setShowHelp] = useState(false);
   const [showAddMenu, setShowAddMenu] = useState(false);
   const [pendingFocusId, setPendingFocusId] = useState(null);
+  const [theme, setTheme] = useState('light');
 
   const canvasRef = useRef(null);
   const importInputRef = useRef(null);
@@ -642,7 +644,7 @@ export default function Canva() {
   const mmMaxY = Math.max(nMaxY, visMaxY) + mmPad;
 
   return (
-    <div className="canvas-container">
+    <div className={`canvas-container ${theme}`}>
       <header className="canvas-header">
         <div className="brand">
           <div className="brand-mark mono">NF</div>
@@ -693,6 +695,9 @@ export default function Canva() {
               </div>
             )}
           </div>
+          <button className="icon-btn theme-toggle" onClick={() => setTheme(t => (t === 'light' ? 'dark' : 'light'))} title="Toggle dark mode">
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
           <div className="help-wrapper">
             <button className="icon-btn help-btn" onClick={() => { setShowHelp(v => !v); setShowAddMenu(false); }} title="Keyboard shortcuts">?</button>
             {showHelp && (
